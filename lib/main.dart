@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zidiointernshipblogapp/core/theme/theme.dart';
+import 'package:zidiointernshipblogapp/feature/auth/presentation/pages/Signin_page.dart';
+// ignore: unused_import
 import 'package:zidiointernshipblogapp/feature/auth/presentation/pages/signup_page.dart';
 
 void main() {
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Blog App',
       theme: AppTheme.darkThemeMode,
-      home: const SignUpPage(),
+      home: const SignInPage(),
     );
   }
 }
