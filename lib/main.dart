@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:zidiointernshipblogapp/core/Secrets/App_secret.dart';
 import 'package:zidiointernshipblogapp/core/theme/theme.dart';
 import 'package:zidiointernshipblogapp/feature/auth/presentation/pages/Signin_page.dart';
 // ignore: unused_import
 import 'package:zidiointernshipblogapp/feature/auth/presentation/pages/signup_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final supabase = await Supabase.initialize(
+      url: AppSecret.supabaseUrl, anonKey: AppSecret.supabaseAnonkey);
   runApp(const MyApp());
 }
 
