@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zidiointernshipblogapp/core/theme/app_pallete.dart';
+import 'package:zidiointernshipblogapp/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:zidiointernshipblogapp/feature/auth/presentation/pages/Signin_page.dart';
 import 'package:zidiointernshipblogapp/feature/auth/presentation/widget/auth_button.dart';
 import 'package:zidiointernshipblogapp/feature/auth/presentation/widget/auth_field.dart';
@@ -57,7 +59,18 @@ class _SignUpPageState extends State<SignUpPage> {
                     isObscureText: true,
                   ),
                   const SizedBox(height: 15),
-                  AuthButton(buttonText: "Sign Up"),
+                  AuthButton(
+                    buttonText: "Sign Up",
+                    onPressed: () {
+                      if (formkey.currentState!.validate()) {
+                        context.read<AuthBloc>().add(AuthSignUp(
+                              email: emailController.text.trim(),
+                              password: passwordController.text.trim(),
+                              name: nameController.text.trim(),
+                            ));
+                      }
+                    },
+                  ),
                   const SizedBox(height: 15),
                   GestureDetector(
                     onTap: () {

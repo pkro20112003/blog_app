@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zidiointernshipblogapp/core/error/failures.dart';
 import 'package:zidiointernshipblogapp/feature/auth/domain/usecases/User_Sign_Up.dart';
 
 part 'auth_event.dart';

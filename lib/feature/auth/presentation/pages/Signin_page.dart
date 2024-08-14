@@ -45,7 +45,7 @@ class _SignInPageState extends State<SignInPage> {
                 controller: passwordController,
                 isObscureText: true),
             const SizedBox(height: 15),
-            AuthButton(buttonText: "Sign In"),
+            AuthButton(buttonText: "Sign In", onPressed: () {}),
             const SizedBox(height: 10),
             GestureDetector(
               onTap: () {
