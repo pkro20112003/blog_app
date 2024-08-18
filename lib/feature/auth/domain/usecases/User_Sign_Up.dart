@@ -3,13 +3,14 @@ import 'package:fpdart/src/either.dart';
 
 import 'package:zidiointernshipblogapp/core/error/failures.dart';
 import 'package:zidiointernshipblogapp/core/usecase/usecase.dart';
+import 'package:zidiointernshipblogapp/feature/auth/domain/entity/user.dart';
 import 'package:zidiointernshipblogapp/feature/auth/domain/repository/auth_repository.dart';
 
-class UserSignUp implements Usecase<String, UserSignUpParams> {
+class UserSignUp implements Usecase<User, UserSignUpParams> {
   final AuthRepository authRepository;
   const UserSignUp(this.authRepository);
   @override
-  Future<Either<Failures, String>> call(UserSignUpParams params) async {
+  Future<Either<Failures, User>> call(UserSignUpParams params) async {
     return await authRepository.signUpWithEmailPassword(
       name: params.name,
       email: params.email,

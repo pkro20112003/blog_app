@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zidiointernshipblogapp/feature/auth/domain/entity/user.dart';
 import 'package:zidiointernshipblogapp/feature/auth/domain/usecases/User_Sign_Up.dart';
 
 part 'auth_event.dart';
@@ -11,14 +12,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       : _userSignUp = userSignUp,
         super(AuthInitial()) {
     on<AuthSignUp>((event, emit) async {
+      emit(AuthLoading());
       final res = await _userSignUp(UserSignUpParams(
         email: event.email,
         password: event.password,
         name: event.name,
       ));
       res.fold(
-        (l) => emit(AuthFailure(l.message)),
-        (uid) => emit(AuthSuccess(uid)),
+        (failure) => emit(AuthFailure(failure.message)),
+        (user) {
+          emit(AuthSuccess(user));
+        },
       );
     });
   }

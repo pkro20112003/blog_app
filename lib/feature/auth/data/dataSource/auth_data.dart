@@ -1,13 +1,14 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:zidiointernshipblogapp/core/error/Exception.dart';
+import 'package:zidiointernshipblogapp/feature/auth/data/model/user_model.dart';
 
 abstract interface class AuthData {
-  Future<String> SignUpWithEmailPassword({
+  Future<UserModel> SignUpWithEmailPassword({
     required String name,
     required String email,
     required String password,
   });
-  Future<String> SignInWithEmailPassword({
+  Future<UserModel> SignInWithEmailPassword({
     required String email,
     required String password,
   });
@@ -17,7 +18,7 @@ class AuthDataImpl implements AuthData {
   final SupabaseClient supabaseClient;
   AuthDataImpl(this.supabaseClient);
   @override
-  Future<String> SignInWithEmailPassword({
+  Future<UserModel> SignInWithEmailPassword({
     required String email,
     required String password,
   }) {
@@ -25,7 +26,7 @@ class AuthDataImpl implements AuthData {
   }
 
   @override
-  Future<String> SignUpWithEmailPassword({
+  Future<UserModel> SignUpWithEmailPassword({
     required String name,
     required String email,
     required String password,
@@ -39,7 +40,7 @@ class AuthDataImpl implements AuthData {
       if (response.user == null) {
         throw ServerException("user is null");
       }
-      return response.user!.id;
+      return UserModel.fromJson(response.user!.toJson());
     } catch (e) {
       throw ServerException(e.toString());
     }
