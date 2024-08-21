@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:zidiointernshipblogapp/core/error/failures.dart';
-import 'package:zidiointernshipblogapp/feature/auth/domain/entity/user.dart';
+import 'package:zidiointernshipblogapp/core/common/entity/user.dart';
 
 abstract interface class AuthRepository {
   Future<Either<Failures, User>> signUpWithEmailPassword({
@@ -12,4 +12,5 @@ abstract interface class AuthRepository {
     required String email,
     required String password,
   });
+  Future<Either<Failures, User>> currentUser();
 }

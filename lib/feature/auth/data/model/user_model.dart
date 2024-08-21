@@ -1,4 +1,4 @@
-import 'package:zidiointernshipblogapp/feature/auth/domain/entity/user.dart';
+import 'package:zidiointernshipblogapp/core/common/entity/user.dart';
 
 class UserModel extends User {
   UserModel({
@@ -12,5 +12,13 @@ class UserModel extends User {
       email: map['email'] ?? '',
       name: map['name'] ?? '',
     );
+  }
+  UserModel copyWith({
+    String? id,
+    String? email,
+    String? name,
+  }) {
+    return UserModel(
+        id: id ?? this.id, email: email ?? this.email, name: name ?? this.name);
   }
 }
