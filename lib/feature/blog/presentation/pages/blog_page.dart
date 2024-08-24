@@ -17,6 +17,7 @@ class BlogPage extends StatefulWidget {
 }
 
 class _BlogPageState extends State<BlogPage> {
+  @override
   void initState() {
     super.initState();
     context.read<BlogBloc>().add(BlogFetchAllBlogs());
@@ -26,7 +27,17 @@ class _BlogPageState extends State<BlogPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Blog App'),
+        // Use a PreferredSize to set a custom height for the AppBar if needed
+        toolbarHeight: kToolbarHeight,
+        title: Center(
+          child: const Text(
+            'Blog App',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
         actions: [
           IconButton(
             onPressed: () {
