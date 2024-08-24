@@ -4,6 +4,7 @@ import 'package:zidiointernshipblogapp/core/common/cubits/app_user/app_user_cubi
 import 'package:zidiointernshipblogapp/core/theme/theme.dart';
 import 'package:zidiointernshipblogapp/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:zidiointernshipblogapp/feature/auth/presentation/pages/Signin_page.dart';
+import 'package:zidiointernshipblogapp/feature/blog/presentation/bloc/blog_bloc.dart';
 import 'package:zidiointernshipblogapp/feature/blog/presentation/pages/blog_page.dart';
 import 'package:zidiointernshipblogapp/init_dependencies.dart';
 
@@ -17,6 +18,9 @@ void main() async {
       ),
       BlocProvider(
         create: (_) => serviceLocator<AuthBloc>(),
+      ),
+      BlocProvider(
+        create: (_) => serviceLocator<BlogBloc>(),
       ),
     ],
     child: const MyApp(),
